@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FunPulse — Бесплатная автоматизация торговли на FunPay</title>
+  
+  <!-- Векторный SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 110'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2310B981'/%3E%3Cstop offset='100%25' stop-color='%2306B6D4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='110' height='110' rx='28' fill='%23090D16' stroke='%2310B981' stroke-width='4'/%3E%3Cpath d='M 18 64 L 34 64 L 42 46 L 52 82 L 64 28 L 76 88 L 86 58 L 94 64 L 102 64' fill='none' stroke='url(%23g)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg: #070a12;
+      --card-bg: rgba(15, 23, 42, 0.65);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #10b981;
+      --primary-glow: rgba(16, 185, 129, 0.35);
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.35);
+      --cyan: #06b6d4;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Фоновые градиентные световые сферы */
+    .ambient-light {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(140px);
+      z-index: -1;
+      pointer-events: none;
+      animation: pulseGlow 10s ease-in-out infinite alternate;
+    }
+    .light-1 {
+      width: 520px;
+      height: 520px;
+      background: var(--primary-glow);
+      top: -120px;
+      left: -150px;
+    }
+    .light-2 {
+      width: 600px;
+      height: 600px;
+      background: var(--accent-glow);
+      bottom: 5%;
+      right: -200px;
+      animation-delay: -5s;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.9) translate(0, 0); opacity: 0.6; }
+      100% { transform: scale(1.15) translate(40px, 30px); opacity: 1; }
+    }
+
+    /* Шапка */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 2.5rem;
+      background: rgba(7, 10, 18, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      transition: transform 0.25s ease;
+    }
+
+    .brand-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .brand-logo-svg {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.25s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 5.5rem 0 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #6ee7b7;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-size: 3.4rem;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.5rem;
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #fff 20%, var(--primary) 70%, var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    /* Кнопки */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #059669);
+      color: #041f14;
+      font-weight: 700;
+      box-shadow: 0 4px 20px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+    }
+
+    .btn-secondary {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    /* Интерактивный симулятор */
+    .simulator {
+      background: rgba(13, 20, 36, 0.8);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(16, 185, 129, 0.1);
+    }
+
+    .sim-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 1.25rem;
+    }
+
+    .sim-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .sim-status {
+      font-size: 0.8rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .sim-toggles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .toggle-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .toggle-info {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: #334155;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle-switch.active {
+      background: var(--primary);
+    }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      top: 3px;
+      left: 3px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toggle-switch.active::after {
+      transform: translateX(20px);
+    }
+
+    .sim-logs {
+      background: #050811;
+      border-radius: 12px;
+      padding: 1rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8rem;
+      height: 170px;
+      overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .log-line {
+      color: #94a3b8;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .log-time { color: #64748b; }
+    .log-success { color: #34d399; }
+    .log-info { color: #38bdf8; }
+
+    /* Статистика */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin: 4rem 0 6rem;
+      padding: 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-item h3 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+    .stat-item p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Модули */
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 6rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2.25rem;
+      backdrop-filter: blur(14px);
+      transition: all 0.35s ease;
+      position: relative;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(16, 185, 129, 0.4);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Секция скачивания: ПК Расширение / Android APK / GitHub */
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 6rem;
+    }
+
+    .download-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3rem 2.25rem;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s;
+    }
+
+    .download-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .download-card.highlight {
+      border-color: var(--primary);
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
+    }
+
+    .free-pill {
+      display: inline-block;
+      align-self: flex-start;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .download-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .download-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+
+    .download-specs {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+
+    .download-specs li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .download-specs svg {
+      color: var(--primary);
+    }
+
+    /* FAQ */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto 6rem;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .faq-question svg {
+      transition: transform 0.3s;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      color: var(--text-muted);
+      padding: 0 1.5rem;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 220px;
+      padding-bottom: 1.25rem;
+    }
+
+    .faq-item.active .faq-question svg {
+      transform: rotate(180deg);
+    }
+
+    /* Подвал */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 3rem;
+      }
+      .hero h1 { font-size: 2.75rem; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      nav { display: none; }
+      .brand-logo-svg { height: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-light light-1"></div>
+  <div class="ambient-light light-2"></div>
+
+  <!-- Шапка сайта -->
+  <header>
+    <a href="#" class="brand-link" aria-label="FunPulse Главная">
+      <svg class="brand-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 140">
+        <defs>
+          <linearGradient id="fpPulseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#10B981" />
+            <stop offset="50%" stop-color="#06B6D4" />
+            <stop offset="100%" stop-color="#3B82F6" />
+          </linearGradient>
+
+          <linearGradient id="fpBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0F172A" />
+            <stop offset="100%" stop-color="#070A12" />
+          </linearGradient>
+
+          <linearGradient id="fpBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#10B981" stop-opacity="0.8" />
+            <stop offset="50%" stop-color="#06B6D4" stop-opacity="0.3" />
+            <stop offset="100%" stop-color="#6366F1" stop-opacity="0.6" />
+          </linearGradient>
+
+          <filter id="fpGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <filter id="fpShadow" x="-20%" y="-20%" width="150%" height="150%">
+            <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#10B981" flood-opacity="0.25" />
+          </filter>
+        </defs>
+
+        <g transform="translate(15, 15)">
+          <rect x="0" y="0" width="110" height="110" rx="30" fill="url(#fpBgGrad)" stroke="url(#fpBorderGrad)" stroke-width="2.5" filter="url(#fpShadow)" />
+          <rect x="3" y="3" width="104" height="52" rx="27" fill="white" fill-opacity="0.03" />
+          <path d="M 62 24 L 44 56 L 58 56 L 48 86 L 72 50 L 58 50 Z" fill="url(#fpPulseGrad)" opacity="0.12" />
+          <path d="M 18 64 L 34 64 L 42 46 L 52 82 L 64 28 L 76 88 L 86 58 L 94 64 L 102 64" fill="none" stroke="url(#fpPulseGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#fpGlow)" />
+          <circle cx="64" cy="28" r="4" fill="#FFFFFF" filter="url(#fpGlow)" />
+          <circle cx="18" cy="64" r="3" fill="#10B981" />
+          <circle cx="102" cy="64" r="3" fill="#06B6D4" />
+        </g>
+
+        <g transform="translate(150, 78)">
+          <text x="0" y="0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="52" letter-spacing="-1.5" fill="#FFFFFF">Fun</text>
+          <text x="96" y="0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="52" letter-spacing="-1.5" fill="url(#fpPulseGrad)">Pulse</text>
+          <g transform="translate(2, 22)">
+            <circle cx="4" cy="-5" r="3.5" fill="#10B981" />
+            <text x="14" y="-2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="12" letter-spacing="3" fill="#94A3B8">AUTOMATION SUITE</text>
+          </g>
+        </g>
+      </svg>
+    </a>
+
+    <nav>
+      <a href="#features">Возможности</a>
+      <a href="#demo">Симулятор</a>
+      <a href="#download">Установка</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#download" class="btn btn-primary">Скачать софт</a>
+  </header>
+
+  <main class="container">
+    <!-- Hero Секция -->
+    <section class="hero">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          ПК-расширение + Android APK • 100% Free
+        </div>
+        <h1>Умная автоматизация <br>FunPay — <span class="text-gradient">на ПК и смартфоне</span></h1>
+        <p>Расширение для браузера на компьютере и автономное APK-приложение на Android. Мгновенная автовыдача товаров, автоподнятие лотов по таймеру и полный контроль за сделками.</p>
+        <div class="hero-actions hero-btns">
+          <a href="#download" class="btn btn-primary">
+            Выбрать платформу
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </a>
+          <a href="#demo" class="btn btn-secondary">Демо-режим</a>
+        </div>
+      </div>
+
+      <!-- Симулятор терминала -->
+      <div class="simulator" id="demo">
+        <div class="sim-header">
+          <div class="sim-dots">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+          </div>
+          <div class="sim-status">
+            <span class="badge-dot"></span> Синхронизация активна
+          </div>
+        </div>
+
+        <div class="sim-toggles">
+          <div class="toggle-item">
+            <span class="toggle-info">⚡ Мгновенная автовыдача товаров</span>
+            <div class="toggle-switch active" id="toggleDelivery" onclick="toggleOption(this, 'Автовыдача')"></div>
+          </div>
+          <div class="toggle-item">
+            <span class="toggle-info">🚀 Автоподнятие предложений (каждые 4ч)</span>
+            <div class="toggle-switch active" id="toggleRaise" onclick="toggleOption(this, 'Автоподнятие')"></div>
+          </div>
+          <div class="toggle-item">
+            <span class="toggle-info">🟢 Статус «Вечный Online»</span>
+            <div class="toggle-switch active" id="toggleOnline" onclick="toggleOption(this, 'Вечный онлайн')"></div>
+          </div>
+        </div>
+
+        <div class="sim-logs" id="logBox">
+          <div class="log-line"><span class="log-time">[20:14:02]</span> <span class="log-info">[Extension]</span> Браузерное расширение подключено к активной вкладке.</div>
+          <div class="log-line"><span class="log-time">[20:14:05]</span> <span class="log-success">[Online]</span> Heartbeat отправлен. Статус: В сети.</div>
+          <div class="log-line"><span class="log-time">[20:14:18]</span> <span class="log-success">[Raise]</span> 14 категорий подняты в топ каталога.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Цифры и преимущества -->
+    <div class="stats-row">
+      <div class="stat-item">
+        <h3>1 клик</h3>
+        <p>Установка в браузер</p>
+      </div>
+      <div class="stat-item">
+        <h3>&lt; 0.5 сек</h3>
+        <p>Скорость автовыдачи</p>
+      </div>
+      <div class="stat-item">
+        <h3>24 / 7</h3>
+        <p>Фон на Android и ПК</p>
+      </div>
+      <div class="stat-item">
+        <h3>0 ₽</h3>
+        <p>Навсегда бесплатно</p>
+      </div>
+    </div>
+
+    <!-- Модули и возможности -->
+    <section id="features">
+      <div class="section-title">
+        <h2>Мощный функционал без скрытых условий</h2>
+        <p>Вся автоматизация работает на клиенте: в вашем браузере на ПК или в приложении на Android.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3>Безлимитная автовыдача</h3>
+          <p>Мгновенная доставка товаров покупателю в диалог сразу после оплаты. Поддержка любого количества лотов.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3>Автоподнятие по расписанию</h3>
+          <p>Поднимает все активные категории раз в 4 часа со случайным интервалом для естественной имитации человека.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <h3>ПК: Расширение для браузера</h3>
+          <p>Никаких тяжелых скриптов, консолей или Python. Расширение встраивается прямо в сайт FunPay в Google Chrome, Яндекс.Браузере или Firefox.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          </div>
+          <h3>Android: Автономный APK</h3>
+          <p>Работает в энергоэффективной фоновой службе телефона. Не требует включенного ПК и не усыпляется системой.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3>Локальная конфиденциальность</h3>
+          <p>Все ключи хранятся внутри браузера (`chrome.storage.local`) или в защищенном Keystore на телефоне. Никаких сторонних серверов.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <h3>Открытый исходный код</h3>
+          <p>Полная прозрачность разработки. Вы можете лично изучить исходный код расширения и мобильного клиента на GitHub.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Скачивание и выбор платформы -->
+    <section id="download">
+      <div class="section-title">
+        <h2>Выберите платформу</h2>
+        <p>Используйте удобный формат работы: браузер на компьютере или APK на телефоне.</p>
+      </div>
+
+      <div class="download-grid">
+        <!-- Карточка 1: Браузерное расширение для ПК -->
+        <div class="download-card highlight">
+          <div class="free-pill">Для Компьютера</div>
+          <h3>Браузерное расширение</h3>
+          <p>Легковесный плагин для браузеров на ПК. Встраивается в интерфейс биржи без установки сторонних программ.</p>
+          <ul class="download-specs">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Chrome, Яндекс.Браузер, Firefox, Edge, Opera</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Автоподхват токена без ручного ввода</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Звуковые уведомления о новых заказах</li>
+          </ul>
+          <a href="#" class="btn btn-primary" style="justify-content: center;" onclick="alert('Скачивание архива расширения (Manifest V3) началось')">Установить для ПК (.zip)</a>
+        </div>
+
+        <!-- Карточка 2: Нативное мобильное приложение Android -->
+        <div class="download-card highlight">
+          <div class="free-pill">Для Смартфона</div>
+          <h3>Android App (.apk)</h3>
+          <p>Нативный мобильный клиент для автономной работы в фоне 24/7 без необходимости держать ПК включенным.</p>
+          <ul class="download-specs">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Android 8.0 и новее</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Foreground Service (не выгружается системой)</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Аппаратное AES-256 шифрование сессии</li>
+          </ul>
+          <a href="#" class="btn btn-primary" style="justify-content: center;" onclick="alert('Скачивание релизного FunPulse.apk началось')">Скачать APK (v2.4.0)</a>
+        </div>
+
+        <!-- Карточка 3: GitHub Репозиторий -->
+        <div class="download-card">
+          <div class="free-pill">Open Source</div>
+          <h3>GitHub Repository</h3>
+          <p>Полный репозиторий с открытым исходным кодом. Соберите бинарники или создайте свой форк.</p>
+          <ul class="download-specs">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Manifest V3 + Kotlin Compose</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Свободная лицензия MIT</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Автосборка в GitHub Actions</li>
+          </ul>
+          <a href="https://github.com/yrybacode/funpay-tools-mobile" target="_blank" class="btn btn-secondary" style="justify-content: center;">Открыть GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="section-title">
+        <h2>Частые вопросы</h2>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>Как установить расширение на ПК?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer">
+            Распакуйте скачанный zip-архив расширения, перейдите в браузере в раздел «Расширения» (`chrome://extensions`), включите «Режим разработчика» в правом верхнем углу и нажмите «Загрузить распакованное расширение».
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>Нужно ли вводить golden_key в расширении на ПК?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer">
+            Нет! Расширение работает прямо внутри вкладки браузера, где вы уже авторизованы на FunPay, поэтому оно автоматически подхватывает текущую сессию без ручного копирования cookie.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>Будет ли Android-приложение работать при выключенном экране?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer">
+            Да. В приложении используется системный сервис с уведомлением (`Foreground Service`) и диспетчер `WorkManager`, благодаря чему система Android не усыпляет процесс даже в режиме глубокого энергосбережения.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Подвал -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 FunPulse • Свободное программное обеспечение с открытым исходным кодом.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">Проект не связан с торговой площадкой FunPay и создан независимым сообществом.</p>
+    </div>
+  </footer>
+
+  <!-- Интерактивный JavaScript -->
+  <script>
+    function toggleFaq(element) {
+      element.classList.toggle('active');
+    }
+
+    function toggleOption(element, featureName) {
+      element.classList.toggle('active');
+      const isActive = element.classList.contains('active');
+      const time = new Date().toTimeString().split(' ')[0];
+      const logBox = document.getElementById('logBox');
+
+      const log = document.createElement('div');
+      log.className = 'log-line';
+      log.innerHTML = `<span class="log-time">[${time}]</span> <span class="${isActive ? 'log-success' : 'log-info'}">[Настройки]</span> ${featureName}: ${isActive ? 'Включено' : 'Выключено'}`;
+      
+      logBox.appendChild(log);
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    const mockEvents = [
+      { text: "Новый заказ #FP-9104: Discord Nitro. Выдано за 0.44с", type: "log-success" },
+      { text: "Покупатель оставил отзыв 5 звезд: 'Все топ, выдача за секунду'", type: "log-info" },
+      { text: "Плановое автоподнятие: 12 лотов в категории Steam", type: "log-success" },
+      { text: "Автоответчик отправил инструкцию по активации ключа", type: "log-info" }
+    ];
+
+    setInterval(() => {
+      const logBox = document.getElementById('logBox');
+      const randomEvent = mockEvents[Math.floor(Math.random() * mockEvents.length)];
+      const time = new Date().toTimeString().split(' ')[0];
+
+      const log = document.createElement('div');
+      log.className = 'log-line';
+      log.innerHTML = `<span class="log-time">[${time}]</span> <span class="${randomEvent.type}">[Live]</span> ${randomEvent.text}`;
+
+      logBox.appendChild(log);
+      if (logBox.children.length > 8) {
+        logBox.removeChild(logBox.children[0]);
+      }
+      logBox.scrollTop = logBox.scrollHeight;
+    }, 5500);
+  </script>
+</body>
+</html>
