@@ -22,6 +22,7 @@
       --accent-pink: #ff0080;
       --accent-orange: #ff9900;
       --accent-green: #10b981;
+      --accent-tg: #229ED9;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -51,7 +52,6 @@
       background-attachment: fixed;
     }
 
-    /* Сетка на фоне */
     .bg-grid {
       position: fixed;
       top: 0;
@@ -131,6 +131,34 @@
       color: var(--accent-cyan);
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tg-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 158, 217, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(34, 158, 217, 0.4);
+      font-weight: 700;
+      padding: 9px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .tg-btn:hover {
+      background: #229ED9;
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(34, 158, 217, 0.4);
+      transform: translateY(-2px);
+    }
+
     .nav-btn {
       display: inline-flex;
       align-items: center;
@@ -138,7 +166,7 @@
       background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
       color: #07090e;
       font-weight: 700;
-      padding: 10px 20px;
+      padding: 9px 18px;
       border-radius: 10px;
       text-decoration: none;
       font-size: 0.9rem;
@@ -150,7 +178,7 @@
       box-shadow: 0 4px 20px rgba(0, 242, 254, 0.4);
     }
 
-    /* Hero Секция */
+    /* Hero */
     .hero {
       padding: 110px 0 70px;
       text-align: center;
@@ -231,19 +259,19 @@
       transform: translateY(-2px);
     }
 
-    .btn-outline {
-      background: rgba(255, 255, 255, 0.04);
+    .btn-tg-hero {
+      background: rgba(34, 158, 217, 0.15);
       color: #fff;
-      border-color: rgba(255, 255, 255, 0.15);
+      border-color: rgba(34, 158, 217, 0.5);
     }
 
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.3);
+    .btn-tg-hero:hover {
+      background: #229ED9;
+      box-shadow: 0 6px 24px rgba(34, 158, 217, 0.4);
       transform: translateY(-2px);
     }
 
-    /* Терминал Preview */
+    /* Терминал */
     .terminal-wrapper {
       max-width: 900px;
       margin: 60px auto 0;
@@ -296,7 +324,7 @@
     .log-info { color: #38bdf8; }
     .log-warn { color: #fbbf24; }
 
-    /* Блок Загрузок */
+    /* Центр Загрузок */
     .section-title {
       text-align: center;
       font-size: clamp(2rem, 3.5vw, 2.7rem);
@@ -666,16 +694,39 @@
       text-align: center;
     }
 
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-tg-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-tg-link:hover {
+      color: #fff;
+    }
+
     .footer-text {
       color: var(--text-muted);
       font-size: 0.85rem;
-      margin-top: 16px;
+      margin-top: 10px;
     }
 
     @media (max-width: 768px) {
       nav ul { display: none; }
       .hero { padding: 70px 0 40px; }
       .terminal-body { font-size: 0.8rem; padding: 16px; }
+      .nav-actions .nav-btn { display: none; }
     }
   </style>
 </head>
@@ -709,12 +760,23 @@
         </ul>
       </nav>
 
-      <a href="https://github.com" target="_blank" class="nav-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-        </svg>
-        GitHub
-      </a>
+      <div class="nav-actions">
+        <!-- Кнопка Telegram-канала -->
+        <a href="https://t.me/funpulse_official" target="_blank" rel="noopener noreferrer" class="tg-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+          </svg>
+          Telegram канал
+        </a>
+
+        <!-- Кнопка GitHub -->
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
     </div>
   </header>
 
@@ -739,7 +801,12 @@
         </svg>
         Перейти к загрузкам
       </a>
-      <a href="#features" class="btn btn-outline">Изучить возможности</a>
+      <a href="https://t.me/funpulse_official" target="_blank" rel="noopener noreferrer" class="btn btn-tg-hero">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+        </svg>
+        Канал проекта @funpulse_official
+      </a>
     </div>
 
     <!-- Live Terminal Preview -->
@@ -840,7 +907,7 @@
         </div>
         <h3>Исходный код</h3>
         <p>Открытый репозиторий. Полная прозрачность кода: ни строчки скрытых скриптов или сбора данных.</p>
-        <a href="https://github.com" target="_blank" class="btn-github">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-github">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
           </svg>
@@ -916,7 +983,7 @@
         <span class="timeline-badge tb-future">Скоро</span>
         <div>
           <h4 style="font-weight:700; margin-bottom: 4px;">Публичный запуск загрузок (v1.0)</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Открытие прямых ссылок на скачивание, публикация в Chrome Web Store и анонс в Telegram-сообществе.</p>
+          <p style="color:var(--text-muted); font-size:0.9rem;">Открытие прямых ссылок на скачивание, публикация в Chrome Web Store и анонс в нашем Telegram-канале.</p>
         </div>
       </div>
     </div>
@@ -950,11 +1017,11 @@
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Как узнать о старте скачивания?</span>
+          <span>Где быстрее всего узнать о выходе релизов и апдейтов?</span>
           <span>+</span>
         </div>
         <div class="faq-answer">
-          Нажмите кнопку «Уведомить о релизе» в блоке скачивания нужной версии и оставьте свой контакт, либо следите за репозиторием на GitHub.
+          Все свежие анонсы, списки изменений и прямые ссылки на скачивание первыми публикуются в нашем официальном канале <a href="https://t.me/funpulse_official" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline;">@funpulse_official</a>.
         </div>
       </div>
     </div>
@@ -963,7 +1030,7 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="logo" style="justify-content: center; margin-bottom: 12px;">
+      <div class="logo" style="justify-content: center; margin-bottom: 16px;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#footer-grad)" stroke-width="2.5">
           <defs>
             <linearGradient id="footer-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -975,6 +1042,16 @@
         </svg>
         <span>FunPule</span>
       </div>
+
+      <div class="footer-links">
+        <a href="https://t.me/funpulse_official" target="_blank" rel="noopener noreferrer" class="footer-tg-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+          </svg>
+          Telegram: @funpulse_official
+        </a>
+      </div>
+
       <p class="footer-text">FunPule не аффилирован с торговой площадкой FunPay. Все товарные знаки принадлежат их законным правообладателям.</p>
       <p class="footer-text" style="margin-top: 6px;">Лицензия MIT • Свободное ПО с открытым кодом</p>
     </div>
@@ -998,6 +1075,17 @@
         <input type="text" id="contactInput" class="modal-input" placeholder="Telegram @username или Email" required />
         <button type="submit" class="btn btn-primary" style="width: 100%;">Получить доступ первым</button>
       </form>
+
+      <div style="margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Или следите за выходом напрямую в канале:</p>
+        <a href="https://t.me/funpulse_official" target="_blank" rel="noopener noreferrer" class="btn-soon" style="text-decoration:none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+          </svg>
+          Перейти в @funpulse_official
+        </a>
+      </div>
+
       <div id="modalSuccess" style="display:none; color: var(--accent-green); font-weight: 600; margin-top: 15px; font-size: 0.95rem;">
         ✓ Вы добавлены в ранний список доступа!
       </div>
