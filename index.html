@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FunPule — Бесплатный экосистемный хелпер для FunPay</title>
-  <meta name="description" content="FunPule — полностью бесплатный инструмент для автоматизации FunPay: расширение, десктоп и мобильное приложение." />
+  <meta name="description" content="FunPule — полностью бесплатный инструмент для автоматизации и кастомизации FunPay: умное автоподнятие, автовыдача, кастомные темы и обои." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,9 +13,9 @@
     :root {
       --bg-dark: #07090e;
       --bg-card: rgba(15, 23, 42, 0.65);
-      --bg-card-hover: rgba(30, 41, 59, 0.8);
+      --bg-card-hover: rgba(30, 41, 59, 0.85);
       --border-color: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(0, 242, 254, 0.3);
+      --border-glow: rgba(0, 242, 254, 0.4);
       --accent-cyan: #00f2fe;
       --accent-blue: #4facfe;
       --accent-purple: #7928ca;
@@ -46,9 +46,9 @@
       line-height: 1.6;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(79, 172, 254, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 35%, rgba(121, 40, 202, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 50% 85%, rgba(0, 242, 254, 0.06) 0%, transparent 40%);
+        radial-gradient(circle at 15% 15%, rgba(79, 172, 254, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 35%, rgba(121, 40, 202, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(0, 242, 254, 0.08) 0%, transparent 40%);
       background-attachment: fixed;
     }
 
@@ -60,8 +60,8 @@
       height: 100vh;
       background-size: 50px 50px;
       background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
       pointer-events: none;
       z-index: -1;
     }
@@ -76,9 +76,9 @@
     header {
       position: sticky;
       top: 0;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: rgba(7, 9, 14, 0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(7, 9, 14, 0.85);
       border-bottom: 1px solid var(--border-color);
       z-index: 100;
     }
@@ -87,7 +87,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 76px;
+      height: 80px;
     }
 
     .logo {
@@ -97,20 +97,20 @@
       text-decoration: none;
       color: #fff;
       font-weight: 800;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       letter-spacing: -0.5px;
     }
 
     .logo-badge {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       background: rgba(16, 185, 129, 0.15);
       color: var(--accent-green);
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 9999px;
       border: 1px solid rgba(16, 185, 129, 0.4);
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
     }
 
     nav ul {
@@ -122,8 +122,8 @@
     nav a {
       color: var(--text-muted);
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
+      font-weight: 600;
+      font-size: 1rem;
       transition: color 0.2s ease;
     }
 
@@ -143,19 +143,41 @@
       gap: 8px;
       background: rgba(34, 158, 217, 0.15);
       color: #38bdf8;
-      border: 1px solid rgba(34, 158, 217, 0.4);
+      border: 1px solid rgba(34, 158, 217, 0.45);
       font-weight: 700;
       padding: 9px 16px;
-      border-radius: 10px;
+      border-radius: 12px;
       text-decoration: none;
       font-size: 0.9rem;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     .tg-btn:hover {
       background: #229ED9;
       color: #fff;
-      box-shadow: 0 4px 18px rgba(34, 158, 217, 0.4);
+      box-shadow: 0 4px 20px rgba(34, 158, 217, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .tg-chat-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(121, 40, 202, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(121, 40, 202, 0.45);
+      font-weight: 700;
+      padding: 9px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+    }
+
+    .tg-chat-btn:hover {
+      background: #7928ca;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(121, 40, 202, 0.45);
       transform: translateY(-2px);
     }
 
@@ -165,17 +187,17 @@
       gap: 8px;
       background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
       color: #07090e;
-      font-weight: 700;
+      font-weight: 800;
       padding: 9px 18px;
-      border-radius: 10px;
+      border-radius: 12px;
       text-decoration: none;
       font-size: 0.9rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .nav-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(0, 242, 254, 0.4);
+      box-shadow: 0 6px 25px rgba(0, 242, 254, 0.45);
     }
 
     /* Hero */
@@ -188,15 +210,15 @@
     .pill-tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
+      gap: 10px;
+      padding: 8px 20px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      backdrop-filter: blur(8px);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 26px;
+      backdrop-filter: blur(10px);
     }
 
     .pill-tag span {
@@ -206,7 +228,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+      font-size: clamp(2.5rem, 5.5vw, 4.4rem);
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: -1.5px;
@@ -214,16 +236,17 @@
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #ffffff 30%, #00f2fe 70%, #7928ca 100%);
+      background: linear-gradient(135deg, #ffffff 25%, #00f2fe 65%, #7928ca 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
       color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto 40px;
+      max-width: 720px;
+      margin: 0 auto 42px;
+      line-height: 1.65;
     }
 
     .hero-actions {
@@ -238,10 +261,10 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1rem;
+      padding: 15px 30px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1.05rem;
       text-decoration: none;
       cursor: pointer;
       transition: all 0.25s ease;
@@ -251,11 +274,11 @@
     .btn-primary {
       background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
       color: #040810;
-      box-shadow: 0 6px 24px rgba(0, 242, 254, 0.3);
+      box-shadow: 0 6px 25px rgba(0, 242, 254, 0.35);
     }
 
     .btn-primary:hover {
-      box-shadow: 0 8px 30px rgba(0, 242, 254, 0.5);
+      box-shadow: 0 8px 35px rgba(0, 242, 254, 0.55);
       transform: translateY(-2px);
     }
 
@@ -267,29 +290,46 @@
 
     .btn-tg-hero:hover {
       background: #229ED9;
-      box-shadow: 0 6px 24px rgba(34, 158, 217, 0.4);
+      box-shadow: 0 6px 25px rgba(34, 158, 217, 0.45);
       transform: translateY(-2px);
     }
 
-    /* Терминал */
-    .terminal-wrapper {
-      max-width: 900px;
-      margin: 60px auto 0;
-      border-radius: 16px;
+    .btn-chat-hero {
+      background: rgba(121, 40, 202, 0.15);
+      color: #fff;
+      border-color: rgba(121, 40, 202, 0.5);
+    }
+
+    .btn-chat-hero:hover {
+      background: #7928ca;
+      box-shadow: 0 6px 25px rgba(121, 40, 202, 0.45);
+      transform: translateY(-2px);
+    }
+
+    /* Интерактивное Превью Control Center */
+    .preview-window-wrapper {
+      max-width: 980px;
+      margin: 65px auto 0;
+      border-radius: 24px;
       overflow: hidden;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 242, 254, 0.1);
-      background: #0b0f19;
+      border: 1.5px solid rgba(0, 242, 254, 0.35);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 242, 254, 0.15);
+      background: #090e1a;
       text-align: left;
     }
 
-    .terminal-bar {
-      background: #111827;
-      padding: 12px 18px;
+    .preview-header {
+      background: rgba(15, 23, 42, 0.85);
+      padding: 16px 24px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .dots-group {
+      display: flex;
       gap: 8px;
-      border-bottom: 1px solid var(--border-color);
     }
 
     .dot {
@@ -297,25 +337,81 @@
       height: 12px;
       border-radius: 50%;
     }
-
     .dot-red { background: #ef4444; }
     .dot-yellow { background: #f59e0b; }
     .dot-green { background: #10b981; }
 
-    .terminal-title {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-left: 12px;
+    .preview-title {
+      font-size: 0.9rem;
+      color: #94a3b8;
       font-family: var(--font-mono);
+      font-weight: 600;
     }
 
-    .terminal-body {
-      padding: 24px;
+    .preview-body {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      background: #080c16;
+    }
+
+    .mini-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .mini-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .mini-card-head h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .mini-switch-active {
+      width: 38px;
+      height: 22px;
+      background: var(--accent-cyan);
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .mini-switch-active::after {
+      content: '';
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #05070c;
+    }
+
+    .mini-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .terminal-container {
+      grid-column: 1 / -1;
+      background: #04060a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 16px 20px;
       font-family: var(--font-mono);
-      font-size: 0.9rem;
-      color: #cbd5e1;
+      font-size: 0.95rem;
       line-height: 1.8;
-      max-height: 250px;
+      color: #cbd5e1;
+      max-height: 170px;
       overflow-y: auto;
     }
 
@@ -327,7 +423,7 @@
     /* Центр Загрузок */
     .section-title {
       text-align: center;
-      font-size: clamp(2rem, 3.5vw, 2.7rem);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
       font-weight: 800;
       letter-spacing: -1px;
       margin-bottom: 16px;
@@ -336,8 +432,8 @@
     .section-subtitle {
       text-align: center;
       color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 600px;
+      font-size: 1.15rem;
+      max-width: 660px;
       margin: 0 auto 50px;
     }
 
@@ -351,8 +447,8 @@
     .download-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 32px 24px;
+      border-radius: 20px;
+      padding: 34px 26px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -360,72 +456,73 @@
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(12px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .download-card:hover {
       border-color: var(--border-glow);
       transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0, 242, 254, 0.12);
+      box-shadow: 0 16px 35px rgba(0, 242, 254, 0.15);
     }
 
     .soon-badge {
       position: absolute;
-      top: 16px;
-      right: 16px;
-      background: linear-gradient(135deg, rgba(255, 153, 0, 0.2) 0%, rgba(255, 0, 128, 0.2) 100%);
+      top: 18px;
+      right: 18px;
+      background: linear-gradient(135deg, rgba(255, 153, 0, 0.25) 0%, rgba(255, 0, 128, 0.25) 100%);
       color: #ffb84d;
-      border: 1px solid rgba(255, 153, 0, 0.4);
-      padding: 4px 10px;
+      border: 1px solid rgba(255, 153, 0, 0.5);
+      padding: 5px 12px;
       border-radius: 9999px;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      box-shadow: 0 0 15px rgba(255, 153, 0, 0.25);
+      gap: 6px;
+      box-shadow: 0 0 16px rgba(255, 153, 0, 0.3);
     }
 
     .soon-badge::before {
       content: '';
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       background-color: #ff9900;
       border-radius: 50%;
-      animation: pulse 1.5s infinite;
+      animation: pulse-dot 1.5s infinite;
     }
 
-    @keyframes pulse {
+    @keyframes pulse-dot {
       0% { transform: scale(0.9); opacity: 0.6; }
       50% { transform: scale(1.4); opacity: 1; }
       100% { transform: scale(0.9); opacity: 0.6; }
     }
 
     .card-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.04);
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .download-card h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 8px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 10px;
     }
 
     .download-card p {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       margin-bottom: 24px;
       flex-grow: 1;
+      line-height: 1.55;
     }
 
     .btn-soon {
@@ -433,10 +530,10 @@
       background: rgba(255, 255, 255, 0.06);
       border: 1px dashed rgba(255, 255, 255, 0.25);
       color: #cbd5e1;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -446,8 +543,8 @@
     }
 
     .btn-soon:hover {
-      background: rgba(255, 153, 0, 0.12);
-      border-color: rgba(255, 153, 0, 0.4);
+      background: rgba(255, 153, 0, 0.15);
+      border-color: rgba(255, 153, 0, 0.5);
       color: #ffb84d;
     }
 
@@ -455,26 +552,26 @@
       width: 100%;
       background: #24292e;
       color: #ffffff;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       border: 1px solid rgba(255, 255, 255, 0.15);
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     .btn-github:hover {
       background: #2f363d;
-      border-color: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.35);
       transform: translateY(-2px);
     }
 
-    /* Фичи */
+    /* Возможности (Features) */
     .features-section {
       padding: 80px 0;
     }
@@ -488,39 +585,41 @@
     .feature-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 32px;
-      transition: transform 0.25s ease;
+      border-radius: 20px;
+      padding: 34px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
     .feature-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
+      border-color: rgba(0, 242, 254, 0.3);
     }
 
     .feature-icon-box {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
-    .ic-cyan { background: rgba(0, 242, 254, 0.1); color: var(--accent-cyan); }
-    .ic-purple { background: rgba(121, 40, 202, 0.1); color: #a855f7; }
-    .ic-green { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
+    .ic-cyan { background: rgba(0, 242, 254, 0.12); color: var(--accent-cyan); }
+    .ic-purple { background: rgba(121, 40, 202, 0.15); color: #c084fc; }
+    .ic-green { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+    .ic-pink { background: rgba(255, 0, 128, 0.15); color: var(--accent-pink); }
 
     .feature-card h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 10px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 12px;
     }
 
     .feature-card p {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.65;
     }
 
     /* Roadmap */
@@ -531,32 +630,32 @@
     .roadmap-timeline {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      max-width: 760px;
+      gap: 22px;
+      max-width: 800px;
       margin: 0 auto;
-      position: relative;
     }
 
     .timeline-item {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      padding: 24px;
-      border-radius: 16px;
+      padding: 26px;
+      border-radius: 18px;
       display: flex;
-      gap: 20px;
+      gap: 22px;
       align-items: flex-start;
     }
 
     .timeline-item.active {
-      border-color: rgba(0, 242, 254, 0.4);
-      background: rgba(15, 23, 42, 0.85);
+      border-color: rgba(0, 242, 254, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.1);
     }
 
     .timeline-badge {
-      padding: 4px 12px;
+      padding: 5px 14px;
       border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 700;
+      font-size: 0.8rem;
+      font-weight: 800;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -571,24 +670,29 @@
     }
 
     .faq-list {
-      max-width: 800px;
+      max-width: 840px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
     }
 
     .faq-item {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item.open {
+      border-color: rgba(0, 242, 254, 0.35);
     }
 
     .faq-question {
-      padding: 20px 24px;
-      font-weight: 600;
-      font-size: 1.05rem;
+      padding: 22px 28px;
+      font-weight: 700;
+      font-size: 1.15rem;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -597,10 +701,10 @@
     }
 
     .faq-answer {
-      padding: 0 24px 20px;
+      padding: 0 28px 24px;
       color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 1.05rem;
+      line-height: 1.7;
       display: none;
     }
 
@@ -615,8 +719,8 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(4, 7, 13, 0.8);
-      backdrop-filter: blur(10px);
+      background: rgba(4, 7, 13, 0.82);
+      backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -634,12 +738,12 @@
 
     .modal-card {
       background: #0f172a;
-      border: 1px solid var(--border-glow);
-      border-radius: 20px;
-      max-width: 480px;
+      border: 1.5px solid var(--border-glow);
+      border-radius: 22px;
+      max-width: 500px;
       width: 100%;
-      padding: 36px;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
       position: relative;
       text-align: center;
       transform: translateY(20px);
@@ -652,8 +756,8 @@
 
     .close-btn {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 18px;
+      right: 18px;
       background: none;
       border: none;
       color: var(--text-muted);
@@ -669,16 +773,16 @@
       margin-top: 24px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .modal-input {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 14px 18px;
-      border-radius: 10px;
+      padding: 15px 20px;
+      border-radius: 12px;
       color: #fff;
-      font-size: 0.95rem;
+      font-size: 1rem;
       outline: none;
     }
 
@@ -689,26 +793,27 @@
     /* Футер */
     footer {
       border-top: 1px solid var(--border-color);
-      padding: 50px 0 30px;
-      background: rgba(5, 7, 12, 0.95);
+      padding: 60px 0 36px;
+      background: rgba(5, 7, 12, 0.98);
       text-align: center;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
     }
 
     .footer-tg-link {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       color: #38bdf8;
       text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 1.05rem;
+      font-weight: 700;
       transition: color 0.2s ease;
     }
 
@@ -716,16 +821,31 @@
       color: #fff;
     }
 
+    .footer-chat-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #c084fc;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+
+    .footer-chat-link:hover {
+      color: #fff;
+    }
+
     .footer-text {
       color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-top: 10px;
+      font-size: 0.95rem;
+      margin-top: 12px;
     }
 
     @media (max-width: 768px) {
       nav ul { display: none; }
-      .hero { padding: 70px 0 40px; }
-      .terminal-body { font-size: 0.8rem; padding: 16px; }
+      .hero { padding: 80px 0 50px; }
+      .preview-body { grid-template-columns: 1fr; padding: 18px; }
       .nav-actions .nav-btn { display: none; }
     }
   </style>
@@ -738,7 +858,7 @@
   <header>
     <div class="container nav-container">
       <a href="#" class="logo">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <defs>
             <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#00f2fe" />
@@ -755,6 +875,7 @@
         <ul>
           <li><a href="#downloads">Скачать</a></li>
           <li><a href="#features">Возможности</a></li>
+          <li><a href="#customizer">Кастомизация</a></li>
           <li><a href="#roadmap">Планы</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
@@ -762,11 +883,19 @@
 
       <div class="nav-actions">
         <!-- Кнопка Telegram-канала -->
-        <a href="https://t.me/funpulse_official" target="_blank" rel="noopener noreferrer" class="tg-btn">
+        <a href="https://t.me/funpule" target="_blank" rel="noopener noreferrer" class="tg-btn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
           </svg>
-          Telegram канал
+          Канал @funpule
+        </a>
+
+        <!-- Кнопка Telegram-чата -->
+        <a href="https://t.me/funpule_chat" target="_blank" rel="noopener noreferrer" class="tg-chat-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          Чат @funpule_chat
         </a>
 
         <!-- Кнопка GitHub -->
@@ -783,61 +912,84 @@
   <!-- Hero Section -->
   <section class="hero container">
     <div class="pill-tag">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.2">
         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
       </svg>
-      <span>Открытый проект без скрытых подписок</span>
+      <span>Открытый проект • 100% Free & Open Source</span>
     </div>
 
     <h1>Твой ультимативный помощник на FunPay — <span class="gradient-text">бесплатно навсегда</span></h1>
-    <p>Автоподнятие предложений каждые 4 часа, мгновенная автовыдача товаров покупателям, уведомления о заказах в Telegram и синхронизация между ПК и смартфоном.</p>
+    <p>Автоподнятие лотов по кулдауну, мгновенная автовыдача клиентам, уведомления в Telegram и полная свобода кастомизации темы FunPay прямо в браузере.</p>
 
     <div class="hero-actions">
       <a href="#downloads" class="btn btn-primary">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
           <polyline points="7 10 12 15 17 10"></polyline>
           <line x1="12" y1="15" x2="12" y2="3"></line>
         </svg>
         Перейти к загрузкам
       </a>
-      <a href="https://t.me/funpulse_official" target="_blank" rel="noopener noreferrer" class="btn btn-tg-hero">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <a href="https://t.me/funpule" target="_blank" rel="noopener noreferrer" class="btn btn-tg-hero">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
         </svg>
-        Канал проекта @funpulse_official
+        Канал @funpule
+      </a>
+      <a href="https://t.me/funpule_chat" target="_blank" rel="noopener noreferrer" class="btn btn-chat-hero">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        Чат сообщества @funpule_chat
       </a>
     </div>
 
-    <!-- Live Terminal Preview -->
-    <div class="terminal-wrapper">
-      <div class="terminal-bar">
-        <div class="dot dot-red"></div>
-        <div class="dot dot-yellow"></div>
-        <div class="dot dot-green"></div>
-        <div class="terminal-title">funpule-daemon v0.9.4 — live log</div>
+    <!-- Интерактивное Превью FunPule Master Control -->
+    <div class="preview-window-wrapper">
+      <div class="preview-header">
+        <div class="dots-group">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div class="preview-title">⚡ FunPule Master Control — Live Dashboard</div>
+        <div style="font-size:0.75rem; color:#10b981; font-weight:700;">ДЕМОН АКТИВЕН</div>
       </div>
-      <div class="terminal-body" id="termLogs">
-        <div><span class="log-time">[18:24:01]</span> <span class="log-info">[SESSION]</span> Авторизация успешна (токен golden_key валиден).</div>
-        <div><span class="log-time">[18:24:02]</span> <span class="log-success">[AUTORAISE]</span> Лоты в категории "Steam / Ключи" успешно подняты.</div>
-        <div><span class="log-time">[18:24:15]</span> <span class="log-info">[WEBHOOK]</span> Мониторинг входящих сообщений активен...</div>
-        <div><span class="log-time">[18:25:30]</span> <span class="log-warn">[ORDER #98412]</span> Новый оплаченный заказ от <b style="color:#fff;">Gamer_2026</b> на сумму 1,450 ₽.</div>
-        <div><span class="log-time">[18:25:31]</span> <span class="log-success">[AUTO-DELIVERY]</span> Товар выдан за 0.8 сек. Уведомление отправлено в Telegram.</div>
+      <div class="preview-body">
+        <div class="mini-card">
+          <div class="mini-card-head">
+            <h4>Умное автоподнятие</h4>
+            <div class="mini-switch-active"></div>
+          </div>
+          <p>Сканирует категории профиля и поднимает предложения ровно в секунду отката 4-часового кулдауна.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-head">
+            <h4>Кастомизатор интерфейса</h4>
+            <div class="mini-switch-active"></div>
+          </div>
+          <p>Тёмная тема, пользовательские обои по URL, размытие фона и кастомная палитра цветов.</p>
+        </div>
+        <div class="terminal-container" id="termLogs">
+          <div><span class="log-time">[13:00:01]</span> <span class="log-info">[SESSION]</span> Авторизация успешна (профиль обнаружен).</div>
+          <div><span class="log-time">[13:00:02]</span> <span class="log-success">[AUTORAISE]</span> Лоты в категории <b>Steam / Ключи</b> успешно подняты в топ!</div>
+          <div><span class="log-time">[13:00:15]</span> <span class="log-warn">[ORDER #98412]</span> Новый заказ: товар выдан за 0.8 сек. Клиент получил автоответ.</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Download Hub -->
-  <section class="container" id="downloads" style="padding: 60px 0;">
+  <section class="container" id="downloads" style="padding: 70px 0;">
     <h2 class="section-title">Центр загрузки FunPule</h2>
-    <p class="section-subtitle">Выбирай удобный способ запуска: расширение для Chrome, отдельное приложение для Windows или мобильный клиент для Android.</p>
+    <p class="section-subtitle">Выбирай удобный формат: расширение для Chrome с встроенной кнопкой на FunPay, отдельное десктоп-приложение или мобильный клиент.</p>
 
     <div class="download-grid">
       <!-- Chrome Extension -->
       <div class="download-card">
         <div class="soon-badge">Soon</div>
         <div class="card-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <circle cx="12" cy="12" r="4"></circle>
             <line x1="21.17" y1="8" x2="12" y2="8"></line>
@@ -846,7 +998,7 @@
           </svg>
         </div>
         <h3>Chrome Расширение</h3>
-        <p>Работает прямо в браузере. Мониторит чат, поднимает лоты на фоне и подсвечивает статистику продаж.</p>
+        <p>Кнопка ⚡ FunPule прямо в шапке сайта, Control Center поверх страницы, автоподнятие и кастомные обои.</p>
         <button class="btn-soon" onclick="openNotifyModal('Chrome Extension')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -860,14 +1012,14 @@
       <div class="download-card">
         <div class="soon-badge">Soon</div>
         <div class="card-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="3" y1="9" x2="21" y2="9"></line>
             <line x1="9" y1="21" x2="9" y2="9"></line>
           </svg>
         </div>
         <h3>Windows Desktop</h3>
-        <p>Автономный фоновый бот (EXE). Сворачивается в системный трей, не грузит систему и работает 24/7.</p>
+        <p>Автономный фоновый бот (.EXE). Сворачивается в трей, поднимает лоты 24/7 без открытого браузера.</p>
         <button class="btn-soon" onclick="openNotifyModal('Windows EXE')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -881,13 +1033,13 @@
       <div class="download-card">
         <div class="soon-badge">Soon</div>
         <div class="card-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
             <line x1="12" y1="18" x2="12.01" y2="18"></line>
           </svg>
         </div>
         <h3>Android APK</h3>
-        <p>Управляй продажами со смартфона. Быстрый ответ покупателям и пуш-уведомления о новых сделках.</p>
+        <p>Мобильный клиент для управления продажами. Пуш-уведомления и автоответчик прямо в смартфоне.</p>
         <button class="btn-soon" onclick="openNotifyModal('Android APK')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -900,13 +1052,13 @@
       <!-- GitHub -->
       <div class="download-card">
         <div class="card-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="16 18 22 12 16 6"></polyline>
             <polyline points="8 6 2 12 8 18"></polyline>
           </svg>
         </div>
         <h3>Исходный код</h3>
-        <p>Открытый репозиторий. Полная прозрачность кода: ни строчки скрытых скриптов или сбора данных.</p>
+        <p>Открытый репозиторий. Без скрытых модулей, бэкдоров и слежки. Безопасность проверена сообществом.</p>
         <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-github">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
@@ -919,39 +1071,53 @@
 
   <!-- Фичи -->
   <section class="features-section container" id="features">
-    <h2 class="section-title">Создано для максимальных продаж</h2>
-    <p class="section-subtitle">Инструменты, которые экономят часы рутинной работы и выводят лоты в топ.</p>
+    <h2 class="section-title">Создано для продавцов нового уровня</h2>
+    <p class="section-subtitle">Автоматизация рутины и полное преображение стандартного интерфейса FunPay.</p>
 
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon-box ic-cyan">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
             <polyline points="17 6 23 6 23 12"></polyline>
           </svg>
         </div>
-        <h3>Умное автоподнятие</h3>
-        <p>Автоматически поднимает лоты в выбранных категориях ровно в ту секунду, когда откатывается 4-часовой кулдаун FunPay.</p>
+        <h3>Умное автоподнятие лотов</h3>
+        <p>Поднимает лоты ровно в ту секунду, когда откатывается 4-часовой кулдаун FunPay. Подробный журнал пишет точные имена разделов.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon-box ic-purple">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
           </svg>
         </div>
         <h3>Мгновенная автовыдача</h3>
-        <p>Выдавай ключи, аккаунты или инструкции сразу после оплаты покупателем. Поддерживает списки и шаблоны ответов.</p>
+        <p>Выдавайте ключи, аккаунты или инструкции покупателям за доли секунды после оплаты с кастомными шаблонами ответов.</p>
+      </div>
+
+      <div class="feature-card" id="customizer">
+        <div class="feature-icon-box ic-pink">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="m4.93 4.93 4.24 4.24"></path>
+            <path d="m14.83 9.17 4.24-4.24"></path>
+            <path d="m14.83 14.83 4.24 4.24"></path>
+            <path d="m9.17 14.83-4.24 4.24"></path>
+          </svg>
+        </div>
+        <h3>Ручной кастомизатор тем</h3>
+        <p>Пользователь сам решает: стандартный FunPay, глубокая тёмная тема, неоновая подсветка или свои обои с регулировкой затемнения и Blur.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon-box ic-green">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <rect x="2" y="4" width="20" height="16" rx="2"></rect>
             <path d="M7 15h0M2 9.5h20"></path>
           </svg>
         </div>
-        <h3>Полный Free & Open Source</h3>
+        <h3>100% Free & Open Source</h3>
         <p>Никаких пробных периодов, VIP-статусов и скрытых комиссий. Весь исходный код доступен каждому для аудита.</p>
       </div>
     </div>
@@ -966,24 +1132,24 @@
       <div class="timeline-item">
         <span class="timeline-badge tb-completed">Выполнено</span>
         <div>
-          <h4 style="font-weight:700; margin-bottom: 4px;">Архитектура ядра и парсер FunPay</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Написаны модули авторизации по golden_key, перехвата веб-сокетов чата и алгоритм автоподнятия.</p>
+          <h4 style="font-weight:800; font-size:1.15rem; margin-bottom: 6px;">Архитектура ядра и парсер FunPay</h4>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Разработан модуль нативного автоподнятия по node_id, логгер категорий и движок автоответа.</p>
         </div>
       </div>
 
       <div class="timeline-item active">
         <span class="timeline-badge tb-progress">Сейчас в работе</span>
         <div>
-          <h4 style="font-weight:700; margin-bottom: 4px;">Бета-тестирование сборки и сборка инсталляторов</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Упаковка расширения под Manifest V3, компиляция EXE в чистый бинарник и оптимизация APK под Android 14+.</p>
+          <h4 style="font-weight:800; font-size:1.15rem; margin-bottom: 6px;">Конструктор тем и бета-тестирование сборки</h4>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Упаковка расширения под Chrome Manifest V3, внедрение кастомизатора обоев и подготовка релизных билдов.</p>
         </div>
       </div>
 
       <div class="timeline-item">
         <span class="timeline-badge tb-future">Скоро</span>
         <div>
-          <h4 style="font-weight:700; margin-bottom: 4px;">Публичный запуск загрузок (v1.0)</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Открытие прямых ссылок на скачивание, публикация в Chrome Web Store и анонс в нашем Telegram-канале.</p>
+          <h4 style="font-weight:800; font-size:1.15rem; margin-bottom: 6px;">Публичный запуск загрузок (v1.0)</h4>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Открытие прямых ссылок на скачивание, публикация в Chrome Web Store и анонс в канале @funpule.</p>
         </div>
       </div>
     </div>
@@ -1001,7 +1167,7 @@
           <span>+</span>
         </div>
         <div class="faq-answer">
-          Да. FunPule имитирует поведение реального пользователя и не отсылает подозрительные пачки запросов. Ваши токены и ключи хранятся исключительно локально на вашем устройстве.
+          Да. Расширение не отправляет ваши данные, куки или пароли на сторонние серверы. Все запросы на поднятие идут локально из вашего браузера с человеческими интервалами, имитируя обычные действия пользователя.
         </div>
       </div>
 
@@ -1017,11 +1183,21 @@
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Где быстрее всего узнать о выходе релизов и апдейтов?</span>
+          <span>Изменяет ли FunPule интерфейс сайта без моего согласия?</span>
           <span>+</span>
         </div>
         <div class="faq-answer">
-          Все свежие анонсы, списки изменений и прямые ссылки на скачивание первыми публикуются в нашем официальном канале <a href="https://t.me/funpulse_official" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline;">@funpulse_official</a>.
+          Нет. По умолчанию FunPay сохраняет свой оригинальный заводской вид. Тёмная тема, кастомные цвета и фоновые обои включаются и настраиваются исключительно самим пользователем в Control Center.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Где быстрее всего узнать о выходе релизов и пообщаться?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Все свежие анонсы и прямые ссылки выходят в нашем канале <a href="https://t.me/funpule" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline;">@funpule</a>, а задать вопрос или пообщаться с другими продавцами можно в чате <a href="https://t.me/funpule_chat" target="_blank" rel="noopener noreferrer" style="color: #c084fc; text-decoration: underline;">@funpule_chat</a>.
         </div>
       </div>
     </div>
@@ -1031,7 +1207,7 @@
   <footer>
     <div class="container">
       <div class="logo" style="justify-content: center; margin-bottom: 16px;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#footer-grad)" stroke-width="2.5">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#footer-grad)" stroke-width="2.5">
           <defs>
             <linearGradient id="footer-grad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#00f2fe" />
@@ -1044,16 +1220,22 @@
       </div>
 
       <div class="footer-links">
-        <a href="https://t.me/funpulse_official" target="_blank" rel="noopener noreferrer" class="footer-tg-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <a href="https://t.me/funpule" target="_blank" rel="noopener noreferrer" class="footer-tg-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
           </svg>
-          Telegram: @funpulse_official
+          Канал: @funpule
+        </a>
+        <a href="https://t.me/funpule_chat" target="_blank" rel="noopener noreferrer" class="footer-chat-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          Чат: @funpule_chat
         </a>
       </div>
 
       <p class="footer-text">FunPule не аффилирован с торговой площадкой FunPay. Все товарные знаки принадлежат их законным правообладателям.</p>
-      <p class="footer-text" style="margin-top: 6px;">Лицензия MIT • Свободное ПО с открытым кодом</p>
+      <p class="footer-text" style="margin-top: 6px;">Лицензия MIT • Свободное ПО с открытым исходным кодом</p>
     </div>
   </footer>
 
@@ -1061,33 +1243,38 @@
   <div class="modal-overlay" id="notifyModal">
     <div class="modal-card">
       <button class="close-btn" onclick="closeNotifyModal()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
 
-      <div style="font-size: 2rem; margin-bottom: 8px;">🚀</div>
-      <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">Релиз уже совсем близко!</h3>
-      <p id="modalPlatformText" style="color: var(--text-muted); font-size: 0.9rem;">Сборка проходит финальные тесты безопасности перед релизом.</p>
+      <div style="font-size: 2.2rem; margin-bottom: 10px;">🚀</div>
+      <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;">Релиз уже совсем близко!</h3>
+      <p id="modalPlatformText" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">Сборка проходит финальные тесты безопасности перед релизом.</p>
 
       <form class="modal-form" onsubmit="handleNotifySubmit(event)">
         <input type="text" id="contactInput" class="modal-input" placeholder="Telegram @username или Email" required />
         <button type="submit" class="btn btn-primary" style="width: 100%;">Получить доступ первым</button>
       </form>
 
-      <div style="margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Или следите за выходом напрямую в канале:</p>
-        <a href="https://t.me/funpulse_official" target="_blank" rel="noopener noreferrer" class="btn-soon" style="text-decoration:none;">
+      <div style="margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); display:flex; flex-direction:column; gap:8px;">
+        <a href="https://t.me/funpule" target="_blank" rel="noopener noreferrer" class="btn-soon" style="text-decoration:none;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
           </svg>
-          Перейти в @funpulse_official
+          Канал @funpule
+        </a>
+        <a href="https://t.me/funpule_chat" target="_blank" rel="noopener noreferrer" class="btn-soon" style="text-decoration:none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          Чат @funpule_chat
         </a>
       </div>
 
-      <div id="modalSuccess" style="display:none; color: var(--accent-green); font-weight: 600; margin-top: 15px; font-size: 0.95rem;">
-        ✓ Вы добавлены в ранний список доступа!
+      <div id="modalSuccess" style="display:none; color: var(--accent-green); font-weight: 700; margin-top: 16px; font-size: 1rem;">
+        ✓ Вы добавлены в список раннего доступа!
       </div>
     </div>
   </div>
@@ -1135,9 +1322,9 @@
     // Live terminal simulator
     const terminal = document.getElementById('termLogs');
     const demoLogs = [
-      '<span class="log-time">[' + new Date().toLocaleTimeString() + ']</span> <span class="log-info">[PING]</span> Соединение с серверами FunPay стабильно (18ms).',
-      '<span class="log-time">[' + new Date().toLocaleTimeString() + ']</span> <span class="log-success">[AUTORAISE]</span> Лоты в разделе "Brawl Stars" подняты в топ.',
-      '<span class="log-time">[' + new Date().toLocaleTimeString() + ']</span> <span class="log-info">[BOT]</span> Автоответчик: отправлено приветствие новому клиенту.'
+      '<span class="log-time">[' + new Date().toLocaleTimeString() + ']</span> <span class="log-info">[PING]</span> Соединение с серверами FunPay стабильно (16ms).',
+      '<span class="log-time">[' + new Date().toLocaleTimeString() + ']</span> <span class="log-success">[AUTORAISE]</span> Лоты в категории <b>Steam / Ключи</b> подняты в топ.',
+      '<span class="log-time">[' + new Date().toLocaleTimeString() + ']</span> <span class="log-info">[THEME]</span> Пользовательские цвета и обои успешно сохранены.'
     ];
 
     let logIdx = 0;
@@ -1149,7 +1336,7 @@
         terminal.scrollTop = terminal.scrollHeight;
         logIdx++;
       }
-    }, 7000);
+    }, 6500);
   </script>
 </body>
 </html>
