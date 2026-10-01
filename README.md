@@ -1,81 +1,97 @@
 <div align="center">
 
-# ⚡ FunPulse (FunPay Tools Ecosystem)
+# ⚡ FunPule (Android Edition)
 
-**Автоматизация торговли на FunPay: расширение для ПК и автономный APK для Android**
+**Автономный мобильный бот для FunPay: автовыдача, автоподнятие и вечный онлайн прямо со смартфона**
 
-[![Platform](https://img.shields.io/badge/Platform-Chrome_Extension_%7C_Android_APK-10b981?style=for-the-badge)](https://github.com/yrybacode/funpay-tools-mobile)
+[![Platform](https://img.shields.io/badge/Platform-Android_APK-10b981?style=for-the-badge&logo=android&logoColor=white)](https://github.com/yrybacode/funpule)
 [![License](https://img.shields.io/badge/License-MIT-06b6d4?style=for-the-badge)](LICENSE)
-[![GitHub Actions](https://img.shields.io/badge/Build-Passing-22c55e?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/yrybacode/funpay-tools-mobile/actions)
+[![Telegram Channel](https://img.shields.io/badge/Telegram-@funpule-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/funpule)
+[![Telegram Chat](https://img.shields.io/badge/Chat-@funpule__chat-7928ca?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/funpule_chat)
+
+<br/>
+
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="100%" />
+
+<br/>
 
 <p align="center">
-  <a href="#-архитектура-решения">Архитектура</a> •
-  <a href="#-возможности">Возможности</a> •
-  <a href="#-установка-на-пк-расширение">Установка на ПК</a> •
-  <a href="#-установка-на-android-apk">Установка на Android</a> •
-  <a href="#-безопасность">Безопасность</a>
+  <a href="#-превью">Превью</a> •
+  <a href="#-фичи">Возможности</a> •
+  <a href="#-установка">Установка</a> •
+  <a href="#-безопасность">Безопасность</a> •
+  <a href="#-комьюнити">Комьюнити</a>
 </p>
-
----
 
 </div>
 
-## 📌 Архитектура экосистемы
+---
 
-FunPulse разделен на два взаимодополняющих формата:
+## 🎬 Превью
 
-1. **💻 На ПК (Браузерное расширение Manifest V3):**
-   * Работает в **Google Chrome, Яндекс.Браузере, Firefox, Opera, Edge**.
-   * Не требует установки Python, сторонних программ или ручного поиска cookie: встраивается прямо в открытую вкладку FunPay и подхватывает сессию автоматически.
-2. **📱 На Android (Нативное приложение .APK):**
-   * Собрано на **Kotlin + Jetpack Compose**.
-   * Работает автономно 24/7 через системную фоновую службу (`Foreground Service`), позволяя автоматизировать торговлю без включенного компьютера.
+<div align="center">
+
+
+```
+┌───────────────────────────────────────────────────────────────┐
+│  📱 Фоновая служба запущена (Foreground Service)   │
+│  🟢 Вечный онлайн активен                          │
+│  🔄 Лоты подняты в категориях: Brawl Stars, Steam  │
+│  ⚡ Заказ #84920: товар моментально выдан          │
+└───────────────────────────────────────────────────────────────┘
+```
+
+<img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" width="750" alt="Cyberpunk Terminal Animation" style="border-radius: 12px;" />
+
+</div>
 
 ---
 
 ## 🚀 Возможности
 
-| Модуль | ПК (Расширение) | Android (.APK) |
-| :--- | :---: | :---: |
-| ⚡ **Мгновенная автовыдача** | Вкладка браузера | Фоновый процесс |
-| 🔄 **Автоподнятие лотов раз в 4ч** | Фоновый Service Worker | WorkManager |
-| 🟢 **Вечный Online** | Heartbeat через браузер | Foreground Service |
-| 💬 **Автоответчик покупателям** | Да | Да |
-| 🔔 **Уведомления о заказах** | Системные уведомления браузера + звук | Push-уведомления со шторки Android |
-| 🔒 **Авторизация** | Автоматически по текущей сессии | Защищенный Keystore (AES-256) |
+* ⚡ **Мгновенная автовыдача** — выдаёт ключи, аккаунты и сообщения сразу после оплаты заказа.
+* 🔄 **Автоподнятие по таймеру** — рассчитывает 4-часовой кулдаун площадки и поднимает лоты секунда в секунду.
+* 🟢 **Вечный онлайн (24/7)** — держит аккаунт в сети без включенного компьютера.
+* 💬 **Автоответчик** — отправляет кастомные сообщения клиентам при новом диалоге.
+* 🔔 **Push-уведомления** — звук и пуш прямо в шторку Android при новых заказах или сообщениях.
+* 🔋 **Работа в фоне** — запущен как нативная служба `Foreground Service` (не выгружается системой из памяти).
 
 ---
 
-## 💻 Установка на ПК (Браузерное расширение)
+## 📱 Установка
 
-1. Скачайте архив с расширением `funpulse-extension.zip` из раздела [Releases](https://github.com/yrybacode/funpay-tools-mobile/releases) и распакуйте в отдельную папку.
-2. Откройте в браузере страницу расширений:
-   * **Chrome / Яндекс:** `chrome://extensions/`
-   * **Firefox:** `about:debugging#/runtime/this-firefox`
-   * **Edge:** `edge://extensions/`
-3. В правом верхнем углу включите тумблер **«Режим разработчика»** (Developer mode).
-4. Нажмите кнопку **«Загрузить распакованное расширение»** (Load unpacked) и укажите распакованную папку.
-5. Откройте сайт FunPay — в правом верхнем углу сайта появится панель управления FunPulse.
-
----
-
-## 📱 Установка на Android (APK-файл)
-
-1. Перейдите во вкладку [**Actions**](https://github.com/yrybacode/funpay-tools-mobile/actions) репозитория.
-2. Откройте последнюю успешную сборку (с зеленой галочкой).
-3. В блоке **Artifacts** скачайте архив `FunPay-Tools-Debug-APK`.
-4. Распакуйте архив и установите полученный `.apk` на свой смартфон.
-5. Введите `golden_key` и включите необходимые модули автовыдачи и поднятия лотов.
+1. Перейдите в раздел [**Releases**](https://github.com/yrybacode/funpule/releases) или скачайте свежий APK из вкладки **Actions** (артефакт `FunPule-Debug-APK`).
+2. Установите `.apk` на свой смартфон (разрешите установку из неизвестных источников).
+3. Откройте приложение, вставьте свой `golden_key` от FunPay.
+4. Включите автоподнятие, автовыдачу и нажмите **«Запустить бота»**.
+5. *(Рекомендуется)* Отключите оптимизацию батареи для приложения в настройках телефона, чтобы Android не глушил службу в спящем режиме.
 
 ---
 
 ## 🛡️ Безопасность
 
-* **Без передачи токенов:** Все данные хранятся исключительно локально (в `chrome.storage.local` браузера или в зашифрованном `Android Keystore`).
-* **Прямые запросы:** Запросы отправляются напрямую на адреса `funpay.com` без промежуточных серверов или аналитики разработчика.
+* 🚫 **Без сторонних серверов:** Бот работает напрямую с серверами `funpay.com`. Никаких вебхуков, баз данных и сливов на сторону.
+* 🔐 **Защита токена:** `golden_key` хранится локально в системном хранилище `Android Keystore` (AES-256).
+* ⏱ **Защита от бана:** Человеческие задержки между запросами для обхода спам-фильтров.
 
 ---
 
-## 📄 Лицензия
+## 💬 Комьюнити
 
-Проект распространяется под свободной лицензией [MIT](LICENSE).
+<div align="center">
+
+[![Telegram Channel](https://img.shields.io/badge/Канал_проекта-@funpule-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/funpule)
+[![Telegram Chat](https://img.shields.io/badge/Чат_комьюнити-@funpule__chat-7928ca?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/funpule_chat)
+
+</div>
+
+---
+
+<div align="center">
+
+<sub>FunPule не аффилирован с торговой площадкой FunPay. Все товарные знаки принадлежат их законным правообладателям.</sub><br/>
+<sub>Лицензия <a href="LICENSE">MIT</a>. Полностью бесплатно и с открытым исходным кодом.</sub>
+
+</div>
+
+```
